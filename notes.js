@@ -5,7 +5,7 @@ const getNotes = () => {
   return "Your notes...";
 }
 
-const addNote = function(title, body) {
+const addNote = (title, body) => {
   const notes = loadNotes()
   const duplicateNotes = notes.filter(note => note.title !== title)
 
@@ -33,12 +33,12 @@ const removeNote = title => {
   }
 }
 
-const saveNotes = function(notes) {
+const saveNotes = notes => {
   const dataJSON = JSON.stringify(notes)
   fs.writeFileSync('notes.json', dataJSON)
 }
 
-const loadNotes = function() {
+const loadNotes = () => {
   try {
     const dataBuffer = fs.readFileSync('notes.json')
     const dataJSON = dataBuffer.toString()
