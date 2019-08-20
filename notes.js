@@ -13,8 +13,12 @@ const addNote = function(title, body) {
     title: title,
     body: body
   })
-  
-  saveNotes(duplicateNotes)
+  if (duplicateNotes.length > notes.length) {
+    console.log(chalk.green.inverse('New note added!'))
+    saveNotes(duplicateNotes)
+  } else {
+    console.log(chalk.red.inverse('Note title taken!'))
+  }
 }
 
 const removeNote = title => {
